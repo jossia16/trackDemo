@@ -1,0 +1,167 @@
+body {
+  font-family: 'Segoe UI', sans-serif;
+  transition: background 0.4s, color 0.4s;
+  background-image: url('https://btech.edu.ph/wp-content/uploads/2021/08/btechwall.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: #333;
+  min-height: 100vh; /* Ensure body takes full viewport height */
+  display: flex; /* Use flexbox for body */
+  flex-direction: column; /* Stack children vertically */
+  margin: 0; /* Remove default body margin */
+  padding: 0; /* Remove default body padding */
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: -1;
+}
+
+.dark-mode {
+  background: #121212 !important;
+  color: #e0e0e0;
+}
+
+.dark-mode::before {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.hidden { display: none !important; }
+
+.student-photo-preview {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+.student-photo-preview.parent-view {
+    width: 80px;
+    height: 80px;
+    display: block;
+    margin: 0 auto 15px auto;
+    box-shadow: 0 0 8px rgba(0,0,0,0.3);
+}
+
+.animated-title {
+  font-weight: 700;
+  font-size: 2.5rem;
+  background: linear-gradient(45deg, #0056b3, #007bff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.05em;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  transition: text-shadow 0.3s ease-in-out, transform 0.3s ease-in-out;
+  display: inline-block;
+}
+
+.animated-title:hover {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.section-card {
+  animation: fadeIn 0.5s ease-in-out;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  background: #ffffff;
+  transition: background 0.3s;
+  padding: 20px;
+}
+
+.dark-mode .section-card {
+  background: #1e1e1e;
+  border-color: #333;
+}
+
+.dark-mode input,
+.dark-mode select,
+.dark-mode textarea {
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid #444;
+}
+
+.icon {
+  width: 40px;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+.toggle-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+}
+
+/* Main layout container for all sections */
+.app-container {
+    flex-grow: 1; /* Allow container to grow and take available space */
+    display: flex;
+    flex-direction: column; /* Stack header and main content vertically */
+    align-items: center; /* Center content horizontally */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Header at the top */
+.app-header {
+    width: 100%;
+    padding: 20px 0; /* Add padding top/bottom */
+    position: relative; /* For the toggle button */
+}
+
+/* Wrapper for the actual content (login, teacher, parent) */
+.content-wrapper {
+    flex-grow: 1; /* Allows content to take up remaining space */
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: flex-start; /* Align content to the top within its wrapper */
+    padding: 0 20px 20px; /* Padding on sides and bottom */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.auth-box {
+    background-color: rgba(255, 255, 255, 0.95);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    max-width: 450px;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.dark-mode .auth-box {
+    background-color: rgba(30, 30, 30, 0.95);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Dashboard specific styling for positioning */
+#teacherSection, #parentSection {
+    max-width: 95%; /* Make dashboards a bit wider */
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 0; /* Remove top margin, handled by content-wrapper padding */
+}
+
+/* Ensure table in teacher section doesn't overflow */
+#teacherStudentList table {
+    table-layout: fixed; /* Helps with column width */
+    width: 100%;
+}
+#teacherStudentList th, #teacherStudentList td {
+    word-wrap: break-word; /* Break long words in cells */
+    white-space: normal; /* Allow text to wrap */
+}
